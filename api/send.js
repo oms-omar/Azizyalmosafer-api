@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -10,17 +11,14 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
 
-  const { name, phone, visa } = req.body;
+  try {
+    const { name, phone, visa } = req.body;
 
-  const BOT_TOKEN = "8671295214:AAGvAGN-beKK2I7AIvoY6xkmo7MRb3QXOVo";
-  const CHAT_ID = "8641368325";
+    const BOT_TOKEN = "8671295214:AAGvAGN-beKK2I7AIvoY6xkmo7MRb3QXOVo";
+    const CHAT_ID = "8641368325";
 
-  const message = `
+    const message = `
 🚀 عميل جديد
 
 👤 الاسم: ${name}
@@ -28,7 +26,6 @@ export default async function handler(req, res) {
 🌍 التأشيرة: ${visa}
 `;
 
-  try {
     await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: {
@@ -43,6 +40,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
 
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ success: false });
   }
 }
