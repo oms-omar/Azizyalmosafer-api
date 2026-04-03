@@ -15,8 +15,8 @@ export default async function handler(req, res) {
   try {
     const { name, phone, visa } = req.body;
 
-    console.log("BOT:", process.env.BOT_TOKEN);
-    console.log("CHAT:", process.env.CHAT_ID);
+    const BOT_TOKEN = process.env.BOT_TOKEN;
+    const CHAT_ID = process.env.CHAT_ID;
 
     const message = `
 🚀 عميل جديد
