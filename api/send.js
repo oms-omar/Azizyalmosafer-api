@@ -15,8 +15,8 @@ export default async function handler(req, res) {
   try {
     const { name, phone, visa } = req.body;
 
-    const BOT_TOKEN = "8671295214:AAGvAGN-beKK2I7AIvoY6xkmo7MRb3QXOVo";
-    const CHAT_ID = "8641368325";
+    const BOT_TOKEN = process.env.BOT_TOKEN;
+    const CHAT_ID = process.env.CHAT_ID;
 
     const message = `
 🚀 عميل جديد
